@@ -1,5 +1,5 @@
 ![When Lizard has a better commit history then you](https://i.imgur.com/4KvHoEl.jpg)
-*When a lizard has a better commit history then you you should Use Github Commit Steak Reminder.*
+*When a lizard has a better commit history then you. you should Use Github Commit Steak Reminder.*
 
 # Github Commit Streak Reminder
 
