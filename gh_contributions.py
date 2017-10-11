@@ -46,7 +46,9 @@ def get_current_streak(username):
     parser.feed(r.text)
     
     rev_rects = list(reversed(parser.rects))
-    rev_rects.pop(0)
+    d_now = dict(rev_rects[0])
+    if int(d_now["data-count"]) == 0:
+        rev_rects.pop(0)
 
     count = 0
     for i in rev_rects:

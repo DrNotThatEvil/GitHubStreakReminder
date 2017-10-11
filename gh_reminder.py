@@ -40,11 +40,11 @@ def CheckContibutions():
 
     checked_hours.append(timestamp.hour)
 
+    minutes = min_until_midnight()
+    longest_s = gh_contributions.get_longest_steak("DrNotThatEvil")
+    current_s = gh_contributions.get_current_streak("DrNotThatEvil")
+
     if gh_contributions.get_commited_today('DrNotThatEvil') == False:
-        minutes = min_until_midnight()
-        longest_s = gh_contributions.get_longest_steak("DrNotThatEvil")
-        current_s = gh_contributions.get_current_streak("DrNotThatEvil")
-        
         if timestamp.hour == 23:
             # Last hour of the day now lets remind the user every 15 minutes.
             if ((timestamp.minute+1) % 15) == 0 and (timestamp.minute+1) < 45:
@@ -72,7 +72,8 @@ def CheckContibutions():
         text = "You have commited today! Here are your stats.\n\n" 
         text = "Today's commit count: {}\n"
         text = text + "Your current streak is: {} days.\nYour longest is {} days."
-        text = text.format(commit_count, minutes, current_s, longest_s)
+        text = text.format(commit_count, current_s, longest_s)
+        send_reminder("Github steak Reminder", text, 1)
 
         
     t = threading.Timer(60, CheckContibutions)
