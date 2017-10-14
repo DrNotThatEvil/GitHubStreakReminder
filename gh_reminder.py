@@ -29,7 +29,10 @@ def CheckContibutions():
 
     timestamp = datetime.datetime.now().time()
 
-    if timestamp.hour == 0:
+    # Fix. This checks if it's the first hour of the day.
+    # If it detects this it checks if there are more then 1 checked hour
+    # if so it clears it. it needs to be higher then 1 or else it keeps clearing
+    if timestamp.hour == 0 and len(checked_hours) > 1:
         checked_hours = []
         commited_today = False
 
