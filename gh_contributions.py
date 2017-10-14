@@ -60,19 +60,19 @@ def get_current_streak(username):
 
     return count
 
-def get_longest_steak(username):
+def get_longest_streak(username):
     r = get(URL % username)
     parser = CustomHTMLParser()
     parser.feed(r.text)
 
-    max_steak = 0
+    max_streak = 0
     count = 0 
     for i in reversed(parser.rects):
         d = dict(i)
         if int(d["data-count"]) > 0:
             count = count + 1
         else:
-            if count > max_steak:
+            if count > max_streak:
                 max_streak = count
                 count = 0
     

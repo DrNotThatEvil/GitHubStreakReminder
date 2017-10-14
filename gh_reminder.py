@@ -6,7 +6,7 @@ import gh_contributions
 import threading
 from pgi.repository import Notify
 
-Notify.init('Github Steak Reminder')
+Notify.init('Github Streak Reminder')
 
 checked_hours = []
 commited_today = False
@@ -44,31 +44,30 @@ def CheckContibutions():
     checked_hours.append(timestamp.hour)
 
     minutes = min_until_midnight()
-    longest_s = gh_contributions.get_longest_steak("DrNotThatEvil")
+    longest_s = gh_contributions.get_longest_streak("DrNotThatEvil")
     current_s = gh_contributions.get_current_streak("DrNotThatEvil")
 
     if gh_contributions.get_commited_today('DrNotThatEvil') == False:
         if timestamp.hour == 23:
             # Last hour of the day now lets remind the user every 15 minutes.
-            if ((timestamp.minute+1) % 15) == 0 and (timestamp.minute+1) < 45:
+            if (timestamp.minute % 15) == 0 and timestamp.minute < 45:
                 # fifteen minutes but not the last 45 minutes 
-                text = "You only have {} minutes left to maintain your GitHub.com steak\n"
+                text = "You only have {} minutes left to maintain your GitHub.com streak\n"
                 text = text + "Your current streak is {} days.\nYour Longest streak is {} days"
                 text = text.format(current_s, longest_s)
-                send_reminder("Github steak Reminder", text, 1)
+                send_reminder("Github streak Reminder", text, 1)
 
-            if ((timestamp.minute+1) > 50):
-                text = "IMPORTANT: You only have {} minutes! left to maintain your GitHub.com steak\n"
+            if (timestamp.minute > 50):
+                text = "IMPORTANT: You only have {} minutes! left to maintain your GitHub.com streak\n"
                 text = text + "Your current streak is {} days.\nYour Longest streak is {} days"
                 text = text.format(minutes, current_s, longest_s)
-                send_reminder("Github steak Reminder", text, 1)
+                send_reminder("Github streak Reminder", text, 1)
         else:
-
-            text = "You have {} minutes left to commit something or you lose your GitHub.com steak.\n\n" 
+            text = "You have {} minutes left to commit something or you lose your GitHub.com streak.\n\n" 
             text = text + "Your current streak is: {} days.\nYour longest is {} days."
             text = text.format(minutes, current_s, longest_s)
 
-            send_reminder("Github steak Reminder", text, 1)
+            send_reminder("Github streak Reminder", text, 1)
     else:
         commited_today = True
         commit_count, _ = gh_contributions.get_count_date('DrNotThatEvil')
@@ -76,7 +75,7 @@ def CheckContibutions():
         text = "Today's commit count: {}\n"
         text = text + "Your current streak is: {} days.\nYour longest is {} days."
         text = text.format(commit_count, current_s, longest_s)
-        send_reminder("Github steak Reminder", text, 1)
+        send_reminder("Github streak Reminder", text, 1)
 
         
     t = threading.Timer(60, CheckContibutions)
