@@ -1,7 +1,7 @@
 ![When Lizard has a better commit history then you](https://i.imgur.com/4KvHoEl.jpg)
-*When a lizard has a better commit history then you. you should Use Github Commit Steak Reminder.*
+*When a lizard has a better commit history then you. you should Use Github Steak Reminder.*
 
-# Github Commit Streak Reminder
+# Github Streak Reminder
 
 I can find myself getting into weird commit habbits. My main excuses are that i work alone on most of my projects but that's not a valid excuse to not commit your work and keep your projects up to date.
 Thats why i made **Streak Reminder** it reminds you to commit to github everyday.
