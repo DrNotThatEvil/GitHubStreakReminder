@@ -74,7 +74,7 @@ def get_longest_streak(username):
         else:
             if count > max_streak:
                 max_streak = count
-                count = 0
+            count = 0
     
     return max_streak
 

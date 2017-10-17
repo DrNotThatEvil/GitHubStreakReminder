@@ -70,11 +70,16 @@ def CheckContibutions():
             send_reminder("Github streak Reminder", text, 1)
     else:
         commited_today = True
-        commit_count, _ = gh_contributions.get_count_date('DrNotThatEvil')
         text = "You have commited today! Here are your stats.\n\n" 
-        text = "Today's commit count: {}\n"
-        text = text + "Your current streak is: {} days.\nYour longest is {} days."
-        text = text.format(commit_count, current_s, longest_s)
+        text = text + "Today's commit count: {}\n"
+        commit_count, _ = gh_contributions.get_count_date('DrNotThatEvil')
+        if longest_s == current_s:
+            text = text + "You are currently on your longest commit streak!"
+            text = text + "Your new record is: {}"
+            text = text.format(commit_count, current_s)
+        else:
+            text = text + "Your current streak is: {} days.\nYour longest is {} days."
+            text = text.format(commit_count, current_s, longest_s)
         send_reminder("Github streak Reminder", text, 1)
 
         
