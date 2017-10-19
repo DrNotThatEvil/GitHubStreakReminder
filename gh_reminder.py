@@ -74,7 +74,7 @@ def CheckContibutions():
         text = text + "Today's commit count: {}\n"
         commit_count, _ = gh_contributions.get_count_date('DrNotThatEvil')
         if longest_s == current_s:
-            text = text + "You are currently on your longest commit streak!"
+            text = text + "You are currently on your longest commit streak!\n"
             text = text + "Your new record is: {}"
             text = text.format(commit_count, current_s)
         else:
